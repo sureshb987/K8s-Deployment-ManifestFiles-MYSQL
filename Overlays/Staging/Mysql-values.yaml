@@ -1,1 +1,5 @@
 
+MYSQL_DATABASE: stagingdb
+MYSQL_USER: staginguser
+MYSQL_PASSWORD: stagingpass
+MYSQL_ROOT_PASSWORD: stagingrootpass
