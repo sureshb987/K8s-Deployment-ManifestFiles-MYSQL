@@ -1,17 +1,13 @@
-
-alertmanager:
-  enabled: false
-
-prometheus:
-  prometheusSpec:
-    service:
-      type: LoadBalancer
-    storageSpec:
-      volumeClaimTemplate:
-        spec:
-          storageClassName: ebs-sc
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 5Gi
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: bank-app
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+    scrape_configs:
+      - job_name: 'bank-app'
+        static_configs:
+          - targets: ['localhost:9090']
