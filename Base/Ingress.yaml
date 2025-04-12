@@ -1,1 +1,25 @@
 
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bank-app-ingress
+  namespace: bank-app
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+    - hosts:
+        - bank.example.com
+      secretName: bank-app-tls
+  rules:
+    - host: bank.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bank-service
+                port:
+                  number: 80
