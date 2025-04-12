@@ -1,1 +1,5 @@
 
+MYSQL_DATABASE: devdb
+MYSQL_USER: devuser
+MYSQL_PASSWORD: devpass
+MYSQL_ROOT_PASSWORD: devrootpass
