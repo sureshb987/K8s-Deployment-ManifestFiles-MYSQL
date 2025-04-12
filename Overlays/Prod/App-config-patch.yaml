@@ -10,7 +10,7 @@ spec:
         - name: backend
           env:
             - name: ENV
-              value: "staging"
+              value: "production"
             - name: DB_HOST
               value: "mysql"
             - name: DB_USER
