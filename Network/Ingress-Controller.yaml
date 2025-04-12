@@ -1,24 +1,25 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-ingress-controller
-  namespace: corporate
+  name: ingress-nginx-controller
+  namespace: ingress-nginx
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: nginx-ingress
+      app.kubernetes.io/name: ingress-nginx
   template:
     metadata:
       labels:
-        app: nginx-ingress
+        app.kubernetes.io/name: ingress-nginx
     spec:
       containers:
         - name: controller
-          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.41.2
+          image: k8s.gcr.io/ingress-nginx/controller:v1.1.1
           args:
             - /nginx-ingress-controller
           ports:
-            - containerPort: 80
-            - containerPort: 443
+            - name: http
+              containerPort: 80
+            - name: https
+              containerPort: 443
