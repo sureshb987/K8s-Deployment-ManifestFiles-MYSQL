@@ -1,1 +1,5 @@
 
+MYSQL_DATABASE: proddb
+MYSQL_USER: produser
+MYSQL_PASSWORD: prodpass
+MYSQL_ROOT_PASSWORD: prodrootpass
