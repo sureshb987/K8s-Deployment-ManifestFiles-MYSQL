@@ -1,4 +1,5 @@
 alertmanager:
+grafana:
   enabled: true
   service:
     type: LoadBalancer
