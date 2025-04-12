@@ -1,1 +1,24 @@
+alertmanager:
+  enabled: true
+  service:
+    type: LoadBalancer
+  adminUser: admin
+  adminPassword: admin123
 
+nodeExporter:
+  service:
+    type: LoadBalancer
+
+kubeStateMetrics:
+  enabled: true
+  service:
+    type: LoadBalancer
+
+additionalScrapeConfigs:
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  - job_name: 'kube-state-metrics'
+    static_configs:
+      - targets: ['kube-state-metrics:8080']
