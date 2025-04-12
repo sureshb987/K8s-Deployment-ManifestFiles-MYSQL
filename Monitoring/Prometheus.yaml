@@ -1,1 +1,17 @@
 
+alertmanager:
+  enabled: false
+
+prometheus:
+  prometheusSpec:
+    service:
+      type: LoadBalancer
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: ebs-sc
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 5Gi
